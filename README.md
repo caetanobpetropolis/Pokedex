@@ -35,15 +35,15 @@ A full-stack Pokédex application built with **Angular**, **NestJS**, and **Dock
 
 ### 1. Start Backend (NestJS)
 
-cd api
-npm install
-npm run start:dev
+- cd api
+- npm install
+- npm run start:dev
 
 ### 2. Start Frontend (Angular)
 
-cd app
-npm install
-npm start
+- cd app
+- npm install
+- npm start
 
 The app will be available at http://localhost:4200
 
@@ -65,6 +65,6 @@ Then visit: http://localhost:4200
 
 ### Backend tests with Jest
 
-cd api
-npm run test
-npm run test:cov
+- cd api
+- npm run test
+- npm run test:cov
