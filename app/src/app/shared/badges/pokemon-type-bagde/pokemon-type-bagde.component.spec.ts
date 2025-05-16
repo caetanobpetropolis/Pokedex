@@ -10,8 +10,8 @@ describe('PokemonTypeBagdeComponent', () => {
     await TestBed.configureTestingModule({
       imports: [PokemonTypeBagdeComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(PokemonTypeBagdeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

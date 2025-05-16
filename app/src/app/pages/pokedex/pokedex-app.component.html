@@ -18,7 +18,7 @@
     <mat-form-field appearance="outline">
       <input type="text" matInput [formControl]="searchControl" [matAutocomplete]="auto" placeholder="e.g. Pikachu" />
 
-      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="searchPokemon($event.option.value)">
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="searchService.searchPokemon($event.option.value)">
         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
           {{ option }}
         </mat-option>
@@ -27,11 +27,11 @@
   </div>
 
   <div class="pokemon-container">
-    <pokemon-table [pokemons]="filteredPokemons">
+    <pokemon-table [pokemons]="storeService.filteredPokemons">
     </pokemon-table>
   </div>
   <div class="load-more-container">
-    <button mat-raised-button color="primary" (click)="loadPokemons()">
+    <button mat-raised-button color="primary" (click)="storeService.loadPokemons()">
       <mat-icon>add</mat-icon>
       Load more
     </button>

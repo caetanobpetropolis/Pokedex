@@ -1,22 +1,22 @@
 <div class="table-wrapper">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  
+
     <!-- ID -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>#</th>
       <td mat-cell *matCellDef="let p"> {{ p.id }} </td>
     </ng-container>
-  
+
     <!-- Name -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef >Name</th>
+      <th mat-header-cell *matHeaderCellDef>Name</th>
       <td mat-cell *matCellDef="let p">
-        <img [src]="'https://cdn.statically.io/gh/PokeAPI/sprites/master/sprites/pokemon/'+ p.id +'.png'" [alt]="p.name"/>
+        <img [src]="spriteUrl+ p.id +'.png'" [alt]="p.name" />
         <span>{{ p.name | titlecase }}</span>
-  
+
       </td>
     </ng-container>
-  
+
     <!-- Types -->
     <ng-container matColumnDef="types">
       <th mat-header-cell *matHeaderCellDef>Type</th>
@@ -28,51 +28,52 @@
         </div>
       </td>
     </ng-container>
-  
+
     <!-- Total -->
     <ng-container matColumnDef="total">
       <th mat-header-cell *matHeaderCellDef>Total</th>
-      <td mat-cell *matCellDef="let p"> {{ getTotalStats(p) }} </td>
+      <td mat-cell *matCellDef="let p"> {{ pokemonStatsService.getTotalStats(p) }} </td>
     </ng-container>
-  
+
     <!-- HP -->
     <ng-container matColumnDef="hp">
       <th mat-header-cell *matHeaderCellDef>HP</th>
-      <td mat-cell *matCellDef="let p"> {{ getStat(p, 'hp') }} </td>
+      <td mat-cell *matCellDef="let p"> {{ pokemonStatsService.getStat(p, 'hp') }} </td>
     </ng-container>
-  
+
     <!-- Attack -->
     <ng-container matColumnDef="attack">
       <th mat-header-cell *matHeaderCellDef>Attack</th>
-      <td mat-cell *matCellDef="let p"> {{ getStat(p, 'attack') }} </td>
+      <td mat-cell *matCellDef="let p"> {{ pokemonStatsService.getStat(p, 'attack') }} </td>
     </ng-container>
-  
+
     <!-- Defense -->
     <ng-container matColumnDef="defense">
       <th mat-header-cell *matHeaderCellDef>Defense</th>
-      <td mat-cell *matCellDef="let p"> {{ getStat(p, 'defense') }} </td>
+      <td mat-cell *matCellDef="let p"> {{ pokemonStatsService.getStat(p, 'defense') }} </td>
     </ng-container>
-  
+
     <!-- Sp. Atk -->
     <ng-container matColumnDef="spAtk">
       <th mat-header-cell *matHeaderCellDef>Sp. Atk</th>
-      <td mat-cell *matCellDef="let p"> {{ getStat(p, 'special-attack') }} </td>
+      <td mat-cell *matCellDef="let p"> {{ pokemonStatsService.getStat(p, 'special-attack') }} </td>
     </ng-container>
-  
+
     <!-- Sp. Def -->
     <ng-container matColumnDef="spDef">
       <th mat-header-cell *matHeaderCellDef>Sp. Def</th>
-      <td mat-cell *matCellDef="let p"> {{ getStat(p, 'special-defense') }} </td>
+      <td mat-cell *matCellDef="let p"> {{ pokemonStatsService.getStat(p, 'special-defense') }} </td>
     </ng-container>
-  
+
     <!-- Speed -->
     <ng-container matColumnDef="speed">
       <th mat-header-cell *matHeaderCellDef>Speed</th>
-      <td mat-cell *matCellDef="let p"> {{ getStat(p, 'speed') }} </td>
+      <td mat-cell *matCellDef="let p"> {{ pokemonStatsService.getStat(p, 'speed') }} </td>
     </ng-container>
-  
+
     <!-- Render rows -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="pokemonDetails(row)" class="pokemon-details"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="pokemonDetails(row)" class="pokemon-details">
+    </tr>
   </table>
 </div>

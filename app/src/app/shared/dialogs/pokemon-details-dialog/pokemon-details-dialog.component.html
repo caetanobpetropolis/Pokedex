@@ -1,9 +1,7 @@
 <div class="dialog-container">
   <h2 class="pokemon-name">{{ data.name | titlecase }}</h2>
 
-  <img class="pokemon-image"
-    [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+ data.id +'.png'"
-    alt="{{ data.name }}" />
+  <img class="pokemon-image" [src]="spriteUrl" alt="{{ data.name }}" />
 
   <div class="type-container">
     <strong>Type:</strong>

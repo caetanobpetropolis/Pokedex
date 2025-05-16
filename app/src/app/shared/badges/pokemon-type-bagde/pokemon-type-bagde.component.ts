@@ -9,5 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './pokemon-type-bagde.component.scss'
 })
 export class PokemonTypeBagdeComponent {
-   @Input() type!: string;
+  @Input() type!: string;
 }

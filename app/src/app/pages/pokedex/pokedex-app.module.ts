@@ -19,7 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { routes } from "./pokedex-app.routes";
 import { PokedexAppComponent } from "./pokedex-app.component";
-import { PokemonService } from "../../services/pokemon.service";
+import { PokemonService } from "../../services/api/pokemon.service";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { PokedexTableComponent } from "../../shared/tables/pokemon-table/pokemon-table.component";
 
@@ -53,4 +53,4 @@ import { PokedexTableComponent } from "../../shared/tables/pokemon-table/pokemon
   ],
   bootstrap: [PokedexAppComponent],
 })
-export class PokedexAppModule {}
+export class PokedexAppModule { }

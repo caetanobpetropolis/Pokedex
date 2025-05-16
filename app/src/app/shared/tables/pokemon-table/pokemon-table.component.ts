@@ -8,7 +8,8 @@ import { ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { PokemonDetailsDialogComponent } from '../../dialogs/pokemon-details-dialog/pokemon-details-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { PokemonService } from '../../../services/pokemon.service';
+import { PokemonStatsService } from '../../../services/app/pokemon-stats.service';
+import { ScreenSize } from '../../../util/screen-size';
 
 @Component({
   selector: 'pokemon-table',
@@ -24,51 +25,42 @@ import { PokemonService } from '../../../services/pokemon.service';
   ]
 })
 export class PokedexTableComponent {
-  constructor(private dialog: MatDialog, public pokemonService: PokemonService) { }
-  @ViewChild(MatTable) table!: MatTable<any>;
+  constructor(private dialog: MatDialog, public pokemonStatsService: PokemonStatsService, private screenSize: ScreenSize) { }
 
+  //Table variables
+  @ViewChild(MatTable) table!: MatTable<any>;
   dataSource = new MatTableDataSource<any>();
+
+  //Sprite URL for the Pokemon
+  public spriteUrl: string = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+
+  //Window size varriables
+  //Check if the screen is desktop or mobile
   isDesktop = true;
+  //Displayed columns for the table
   displayedColumns: string[] = [];
 
 
-  @Input() set pokemons(value: any[]) {
-    this.dataSource.data = value;
+  @Input() set pokemons(value: any[] | null) {
+    this.dataSource.data = value ?? [];
     if (this.table) {
       this.table.renderRows();
     }
   }
 
   ngOnInit() {
-    this.checkScreenSize();
-    window.addEventListener('resize', () => this.checkScreenSize());
-  }
-
-
-  getStat(pokemon: any, statName: string): number {
-    return pokemon.stats.find((s: any) => s.stat.name === statName)?.base_stat ?? 0;
-  }
-
-  getTotalStats(pokemon: any): number {
-    return pokemon.stats.reduce((acc: number, stat: any) => acc + stat.base_stat, 0);
+    this.screenSize.isDesktop$.subscribe(isDesktop => {
+      this.isDesktop = isDesktop;
+      this.displayedColumns = [
+        'id', 'name', 'types',
+        ...(isDesktop ? ['total', 'hp', 'attack', 'defense', 'spAtk', 'spDef', 'speed'] : [])
+      ];
+    });
   }
 
   pokemonDetails(pokemon: any) {
     this.dialog.open(PokemonDetailsDialogComponent, {
       data: pokemon
     });
-  }
-
-  checkScreenSize(): void {
-    this.isDesktop = window.innerWidth >= 768;
-
-    this.displayedColumns = [
-      'id',
-      'name',
-      'types',
-      ...(this.isDesktop
-        ? ['total', 'hp', 'attack', 'defense', 'spAtk', 'spDef', 'speed']
-        : []),
-    ];
   }
 }
