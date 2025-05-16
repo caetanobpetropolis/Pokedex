@@ -1,0 +1,128 @@
+.pokedex-wrapper {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 32px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+
+  .intro-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px 16px;
+    text-align: center;
+
+    h1 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+
+    .intro-box {
+      background-color: #f4f4f4;
+      padding: 16px 24px;
+      border-radius: 6px;
+      font-size: 16px;
+      color: #333;
+      text-align: left;
+      line-height: 1.6;
+
+      p {
+        margin: 0 0 12px 0;
+      }
+
+      em {
+        font-style: italic;
+      }
+    }
+  }
+
+  .search-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 16px;
+    color: white;
+  }
+
+  .pokemon-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    margin-left: calc(50% - 207px);
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      background: #f5f5f5;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 16px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+      .column {
+        padding: 0 4px;
+      }
+
+      .index {
+        text-align: left;
+      }
+
+      .name {
+        text-align: left;
+      }
+
+      .types {
+        text-align: center;
+      }
+
+      .stat,
+      .total {
+        text-align: right;
+      }
+    }
+  }
+
+  .load-more-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    padding: 0 0 20px;
+
+    button {
+      border: 1px solid #d1d1d1;
+      background-color: white;
+      color: #333;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      transition: all 0.2s ease-in-out;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      &:hover {
+        background-color: #f6f6f6;
+        transform: translateY(-2px);
+      }
+
+      mat-icon {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .pokedex-wrapper {
+    .pokemon-container {
+      margin-left: 0;
+    }
+  }
+
+}

@@ -1,0 +1,37 @@
+<div class="dialog-container">
+  <h2 class="pokemon-name">{{ data.name | titlecase }}</h2>
+
+  <img class="pokemon-image"
+    [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+ data.id +'.png'"
+    alt="{{ data.name }}" />
+
+  <div class="type-container">
+    <strong>Type:</strong>
+    <pokemon-type-badge *ngFor="let t of data.types" [type]="t.type.name">
+    </pokemon-type-badge>
+  </div>
+
+  <div class="info-grid">
+    <div><strong>Height:</strong> {{ data.height / 10 }} m</div>
+    <div><strong>Weight:</strong> {{ data.weight / 10 }} kg</div>
+    <div><strong>Base XP:</strong> {{ data.base_experience }}</div>
+    <div><strong>Order:</strong> {{ data.order }}</div>
+  </div>
+
+  <div class="abilities">
+    <strong>Abilities:</strong>
+    <ul>
+      <li *ngFor="let a of data.abilities">
+        {{ a.ability.name | titlecase }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="stats">
+    <h3>Base Stats</h3>
+    <div class="stat" *ngFor="let stat of data.stats">
+      <span class="label">{{ stat.stat.name | titlecase }}</span>
+      <span class="value">{{ stat.base_stat }}</span>
+    </div>
+  </div>
+</div>

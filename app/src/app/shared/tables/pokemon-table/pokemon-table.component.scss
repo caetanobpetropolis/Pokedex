@@ -1,0 +1,45 @@
+.table-wrapper {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 16px;
+}
+table {
+  min-width: 0;
+  margin: 10px;
+  th {
+    font-weight: bold;
+    white-space: nowrap;
+  }
+  td {
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .pokemon-details{
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+  }
+    .pokemon-details:hover {
+      background: #f0f0f0;
+    }
+  img {
+    vertical-align: middle;
+    margin-right: 8px;
+    height: 70px;
+    width: 70px;
+  }
+}
+
+.types-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap; 
+  gap: 10px;
+  align-items: flex-start;
+}
+
+::ng-deep .mat-mdc-row {
+  height: 110px !important; 
+}
+
+
