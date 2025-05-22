@@ -17,7 +17,7 @@ export class PokemonController {
     try {
       return await this.pokemonService.findAll(offset, limit);
     } catch (error) {
-      throw new InternalServerErrorException('Cannot fetch pokemon lists');
+      throw new InternalServerErrorException('Cannot fetch pokemon list');
     }
   }
 
